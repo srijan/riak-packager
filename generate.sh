@@ -47,7 +47,7 @@ cat riak.template | m4 -DRELEASENAME=${RELEASENAME} > ./build/riak-${RELEASENAME
 cat riak-admin.template | m4 -DRELEASENAME=${RELEASENAME} > ./build/riak-${RELEASENAME}-admin
 cat riak.rc.template | m4 -DRELEASENAME=${RELEASENAME} > ./build/riak-${RELEASENAME}.rc
 cat riak.service.template | m4 -DRELEASENAME=${RELEASENAME} > ./build/riak-${RELEASENAME}.service
-cat vars.config.template | m4 -DWEBIP=${WEBIP} -DWEBPORT=${WEBPORT} -DHANDOFFPORT=${HANDOFFPORT} -DPBIP=${PBIP} -DPBPORT=${PBPORT} > ./build/vars.config
+cat vars.config.template | m4 -DRELEASENAME=${RELEASENAME} -DWEBIP=${WEBIP} -DWEBPORT=${WEBPORT} -DHANDOFFPORT=${HANDOFFPORT} -DPBIP=${PBIP} -DPBPORT=${PBPORT} > ./build/vars.config
 
 VARS_CONFIG_MD5=$(md5 "./build/vars.config")
 RIAK_BIN_MD5=$(md5 "./build/riak-${RELEASENAME}")
