@@ -35,11 +35,12 @@ post_upgrade() {
 # arg 1:  the old package version
 pre_remove() {
   /usr/bin/riak-RELEASENAME stop &>/dev/null; sleep 1;
-  pkill -u "$iuser"
-  pkill -9 -u "$iuser"
+  pkill -u "$iuser" -f "RELEASENAME"
+  pkill -9 -u "$iuser" -f "RELEASENAME"
 
-  chown -R "root:root" "$ihome"
-
-  userdel "$iuser" &> /dev/null
+  echo "riak user and riak geoup are not being removed from the system. "
+  echo "If there are no other riak nodes installed, you can removed them manually. And if you don't want to keep the data/configs, you can delete the /opt/riak directory."
+  #chown -R "root:root" "$ihome"
+  #userdel "$iuser" &> /dev/null
   #groupdel "$igroup" &> /dev/null
 }
