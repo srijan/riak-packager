@@ -7,14 +7,16 @@ md5() {
 }
 
 if [ $# -eq 0 ]; then
-  source ./release.conf
+  CONFFILE="./release.conf"
 else
   if [ $1 == "clean" ]; then
     rm -rf build
     exit 0
   fi
-  RELEASENAME=$1
+  CONFFILE="./release.conf.d/$1.conf"
 fi
+
+source "${CONFFILE}"
 
 mkdir -p build
 cat riak.template | m4 -DRELEASENAME=${RELEASENAME} > ./build/riak-${RELEASENAME}
