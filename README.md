@@ -16,7 +16,7 @@ If some other argument is passed, say `sample`, then a file named `sample.conf` 
 Other Notes
 ===========
 
-This repository comes with six config files: dev, prod1, prod2, prod3, prod4, and prod5.
+* This repository comes with six config files: dev, prod1, prod2, prod3, prod4, and prod5.
 
-When using the prod# configs, a proxy needs to be installed to distribute requests to the nodes.
+* When using the prod# configs, a proxy needs to be installed to distribute requests to the nodes. A sample configuration file for doing this in haproxy is included.
 
