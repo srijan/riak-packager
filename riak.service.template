@@ -1,0 +1,12 @@
+[Unit]
+Description=riak-RELEASENAME - Distributed key/value store from Basho Technologies
+After=network.target
+
+[Service]
+User=riak
+Type=forking
+ExecStart=/opt/riak/RELEASENAME/bin/riak start
+ExecStop=/opt/riak/RELEASENAME/bin/riak stop
+
+[Install]
+WantedBy=multi-user.target
