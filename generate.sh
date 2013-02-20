@@ -6,6 +6,20 @@ md5() {
     md5sum $1 | awk '{print $1}'
 }
 
+confirm_or_exit () {
+  # call with a prompt string or use a default
+  read -r -p "${1:-Are you sure? [Y/n]} " response
+  case $response in
+    [yY][eE][sS]|[yY]) 
+      true
+      ;;
+    *)
+      echo "${2:-Exiting}"
+      exit 2
+      ;;
+  esac
+}
+
 if [ $# -eq 0 ]; then
   CONFFILE="./release.conf"
 else
@@ -21,6 +35,10 @@ then
   echo "Conf file not found."
   exit 1
 fi
+
+echo "Going to use ${CONFFILE} to make PKGBUILD."
+
+confirm_or_exit "Is this okay?" "Doing nothing."
 
 source "${CONFFILE}"
 
@@ -39,4 +57,6 @@ RIAK_SERVICE_MD5=$(md5 "./build/riak-${RELEASENAME}.service")
 
 cat riak.install.template | m4 -DRELEASENAME=${RELEASENAME} > ./build/riak.install
 cat PKGBUILD.template | m4 -DRELEASENAME=${RELEASENAME} -DVARS_CONFIG_MD5=${VARS_CONFIG_MD5} -DRIAK_BIN_MD5=${RIAK_BIN_MD5} -DRIAK_ADMIN_BIN_MD5=${RIAK_ADMIN_BIN_MD5} -DRIAK_RC_MD5=${RIAK_RC_MD5} -DRIAK_SERVICE_MD5=${RIAK_SERVICE_MD5} > ./build/PKGBUILD
+
+echo "PKGBUILD and related files generated in ./build"
 
