@@ -13,3 +13,10 @@ If clean is passed as 1st argument, then the build directory is removed.
 
 If some other argument is passed, say `sample`, then a file named `sample.conf` is searched for in a directory named release.conf.d, and the config is taken from there.
 
+Other Notes
+===========
+
+This repository comes with six config files: dev, prod1, prod2, prod3, prod4, and prod5.
+
+When using the prod# configs, a proxy needs to be installed to distribute requests to the nodes.
+
