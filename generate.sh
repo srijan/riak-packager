@@ -8,7 +8,7 @@ md5() {
 
 confirm_or_exit () {
   # call with a prompt string or use a default
-  read -r -p "${1:-Are you sure? [Y/n]} " response
+  read -r -p "${1:-Are you sure? [y/N]} " response
   case $response in
     [yY][eE][sS]|[yY]) 
       true
@@ -38,7 +38,7 @@ fi
 
 echo "Going to use ${CONFFILE} to make PKGBUILD."
 
-confirm_or_exit "Is this okay?" "Doing nothing."
+confirm_or_exit "Is this okay? [y/N] " "Doing nothing."
 
 source "${CONFFILE}"
 
