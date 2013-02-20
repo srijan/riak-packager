@@ -16,6 +16,12 @@ else
   CONFFILE="./release.conf.d/$1.conf"
 fi
 
+if [ ! -f "${CONFFILE}" ];
+then
+  echo "Conf file not found."
+  exit 1
+fi
+
 source "${CONFFILE}"
 
 mkdir -p build
