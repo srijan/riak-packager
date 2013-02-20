@@ -63,6 +63,7 @@ package() {
   msg 'Archlinux Integration'
 
   install -d ${pkgdir}/var/log/riak
+  install -d ${pkgdir}/etc/riak
   ln -s /opt/riak/RELEASENAME/log ${pkgdir}/var/log/riak/RELEASENAME
   install -d ${pkgdir}/etc/rc.d
   install -d ${pkgdir}/usr/lib/systemd/system

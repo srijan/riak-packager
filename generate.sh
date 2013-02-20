@@ -7,13 +7,13 @@ md5() {
 }
 
 if [ $# -eq 0 ]; then
-    source ./releases.conf
+  source ./release.conf
 else
-    if [ $1 == "clean" ]; then
-        rm -rf build
-	exit 0
-    fi
-    RELEASENAME=$1
+  if [ $1 == "clean" ]; then
+    rm -rf build
+    exit 0
+  fi
+  RELEASENAME=$1
 fi
 
 mkdir -p build
