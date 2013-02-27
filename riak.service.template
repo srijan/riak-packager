@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=riak
 Type=forking
+LimitNOFILE=65536
 ExecStart=/opt/riak/RELEASENAME/bin/riak start
 ExecStop=/opt/riak/RELEASENAME/bin/riak stop
 
